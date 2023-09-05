@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--파일이 종류가 mybatis용-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//
+              EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--mybatis를 사용할 DAO패키지를 지정-->
+
+<mapper namespace="com.sinsa.recoll.DAO.RecollDAO">
+    <select id="selectAllRecoll" resultType="RecollVO">
+                <![CDATA[
+        SELECT *
+        FROM sinsa_tbl
+        ]]>
+        </select>
+
+    <insert id="insertRecoll">
+            <![CDATA[
+        INSERT INTO sinsa_tbl(sname, scost, scount, sch, swhy)
+        VALUES (#{sname}, #{scost}, #{scount}, #{sch}, #{swhy})
+        ]]>
+        </insert>
+
+    <select id="selectUpdate" resultType="RecollVO"><!-- 수정할 해당번의자료를 읽어온다-->
+        <![CDATA[
+        select *
+        from sinsa_tbl
+        where sno = #{sno}
+        ]]>
+    </select>
+
+    <update id="updateRecoll">
+            <![CDATA[
+        UPDATE sinsa_tbl
+        SET
+            sname=#{sname},
+            scost=#{scost},
+            scount=#{scount},
+            sch=#{sch},
+            swhy=#{swhy}
+        WHERE sno=#{sno}
+        ]]>
+        </update>
+
+    <delete id="deleteRecoll">
+        <![CDATA[
+        DELETE
+        FROM sinsa_tbl
+        WHERE sno = #{sno}
+        ]]>
+    </delete>
+
+</mapper>
